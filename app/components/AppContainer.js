@@ -33,7 +33,7 @@ const Button = styled.TouchableHighlight`
   min-width: 100;
 `;
 
-export default ({ triggerDemo, demo }) => (
+export default ({ triggerDemo, navigateForward, demo }) => (
   <Container>
     <Welcome>
       Welcome to React Native!
@@ -46,6 +46,7 @@ export default ({ triggerDemo, demo }) => (
       Cmd+D or shake for dev menu
     </Instructions>
     <Button onPress={triggerDemo} warning={demo}><View><Instructions>Toggle Demo</Instructions></View></Button>
+    <Button onPress={navigateForward}><View><Instructions>Navigate Forward</Instructions></View></Button>
     <Instructions>
       Demo: {demo.toString()}
     </Instructions>
