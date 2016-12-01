@@ -26,7 +26,7 @@ const Instructions = styled.Text`
 `;
 
 const Button = styled.TouchableHighlight`
-  background-color: limegreen;
+   background-color: ${props => props.warning ? 'orange' : 'limegreen'};
   padding: 5;
   border: 1 solid black;
   border-radius: 5;
@@ -45,7 +45,7 @@ export default ({ triggerDemo, demo }) => (
       Press Cmd+R to reload,{'\n'}
       Cmd+D or shake for dev menu
     </Instructions>
-    <Button onPress={triggerDemo}><View><Instructions>Toggle Demo</Instructions></View></Button>
+    <Button onPress={triggerDemo} warning={demo}><View><Instructions>Toggle Demo</Instructions></View></Button>
     <Instructions>
       Demo: {demo.toString()}
     </Instructions>
