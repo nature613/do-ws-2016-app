@@ -2,5 +2,5 @@ export const DEMO = 'DEMO';
 
 //Navigation
 
-export const NAVIGATION_FORWARD = 'NAVIGATION_FORWARD';
-export const NAVIGATION_BACK = 'NAVIGATION_BACK';
+export const NAVIGATION_PUSH = 'NAVIGATION_PUSH';
+export const NAVIGATION_POP= 'NAVIGATION_POP';

@@ -1,9 +1,9 @@
 import * as types from './types';
 
-export const navigateForward = (state) => ({
-  type: types.NAVIGATION_FORWARD,
+export const navigatePush= (state) => ({
+  type: types.NAVIGATION_PUSH,
   state,
 })
-export const navigateBack = () => ({
-  type: types.NAVIGATION_BACK,
+export const navigatePop = () => ({
+  type: types.NAVIGATION_POP,
 })

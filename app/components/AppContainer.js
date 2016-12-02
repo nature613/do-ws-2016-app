@@ -8,6 +8,7 @@ import styled from 'styled-components/native';
 import DemoView from '../containers/DemoView';
 import Cookbooks from '../containers/Cookbooks';
 import Recipes from '../containers/Recipes';
+import Recipe from '../containers/Recipe';
 
 const {
   Transitioner,
@@ -17,6 +18,7 @@ const {
 const {
   PagerStyleInterpolator,
 } = Card;
+
 
 const Container = styled.View`
   flex: 1;
@@ -28,6 +30,8 @@ const getScene = (key) => {
       return Cookbooks;
     case 'Recipes':
       return Recipes;
+    case 'Recipe':
+      return Recipe;
     default:
       return DemoView;
   }

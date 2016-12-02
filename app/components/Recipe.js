@@ -24,19 +24,17 @@ const Button = styled.TouchableHighlight`
   border-radius: 5;
   min-width: 100;
 `;
-// const prepare = (navigate, scenes) => () => navigate({key: '[' + scenes.length + ']-' + Date.now()})
-const prepare = (navigate, id) => () => navigate({key: 'Recipes', id})
 
-export default ({ triggerDemo, navigatePush, demo, children }) => (
+export default ({ triggerDemo, navigatePop, demo, children, scene }) => (
   <Container>
     <Text>
-      Cookbooks
+      Recipe {scene.route.id}
     </Text>
-    <Button onPress={prepare(navigatePush, "Beef")}>
-      <View><Text>Show Beef Recipes</Text></View>
-    </Button>
-    <Button onPress={prepare(navigatePush, "Chicken")}>
-      <View><Text>Show Chicken Recipes</Text></View>
+    <Text>
+      Category {scene.route.category}
+    </Text>
+    <Button onPress={navigatePop} warning>
+      <View><Text>Back</Text></View>
     </Button>
   </Container>
 );

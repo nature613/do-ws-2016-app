@@ -12,21 +12,12 @@ export const navigation = createReducer({
   index: 0,
   routes: [
     { key: 'Cookbooks' },
-    { key: 'Recipes' },
   ]
 }, {
-  [types.NAVIGATION_FORWARD](state, action){
-    return StateUtils.forward(state);
+  [types.NAVIGATION_PUSH](state, action){
+    return Object.assign({}, state, StateUtils.push(state, action.state));
   },
-  [types.NAVIGATION_BACK](state, action){
-    return StateUtils.back(state);
+  [types.NAVIGATION_POP](state, action){
+    return StateUtils.pop(state);
   },
 });
-export const navigationParams = createReducer({},{
-    [types.NAVIGATION_FORWARD](state, action){
-      return action.state
-    },
-    [types.NAVIGATION_BACK](state, action){
-      return {};
-    },
-})

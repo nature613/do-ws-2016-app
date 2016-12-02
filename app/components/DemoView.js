@@ -31,9 +31,7 @@ const Button = styled.TouchableHighlight`
   min-width: 100;
 `;
 
-const prepare = (id, navigateForward) => () => navigateForward({id})
-
-export default ({ triggerDemo, navigateForward, navigateBack, demo, children }) => (
+export default ({ triggerDemo, navigatePop, demo, children }) => (
   <Container>
     <Welcome>
       Welcome to React Native!
@@ -46,8 +44,7 @@ export default ({ triggerDemo, navigateForward, navigateBack, demo, children }) 
       Cmd+D or shake for dev menu
     </Instructions>
     <Button onPress={triggerDemo} warning={demo}><View><Instructions>Toggle Demo</Instructions></View></Button>
-    <Button onPress={prepare("test", navigateForward)}><View><Instructions>Navigate Forward</Instructions></View></Button>
-    <Button onPress={navigateBack}><View><Instructions>Navigate Back</Instructions></View></Button>
+    <Button onPress={navigatePop}><View><Instructions>Navigate Back</Instructions></View></Button>
     <Instructions>
       Demo: {demo.toString()}
     </Instructions>
