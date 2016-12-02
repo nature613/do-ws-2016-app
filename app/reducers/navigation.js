@@ -5,7 +5,6 @@ import createReducer from '../lib/createReducer';
 import * as types from '../actions/types'
 
 const {
-  CardStack,
   StateUtils,
 } = NavigationExperimental;
 
@@ -26,5 +25,8 @@ export const navigation = createReducer({
 export const navigationParams = createReducer({},{
     [types.NAVIGATION_FORWARD](state, action){
       return action.state
+    },
+    [types.NAVIGATION_BACK](state, action){
+      return {};
     },
 })

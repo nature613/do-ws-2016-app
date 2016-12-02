@@ -1,54 +1,75 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import {
-  TouchableHighlight,
-  View,
+  Animated,
+  NavigationExperimental,
 } from 'react-native';
+import styled from 'styled-components/native';
 
+import DemoView from '../containers/DemoView';
+import Cookbooks from '../containers/Cookbooks';
+import Recipes from '../containers/Recipes';
+
+const {
+  Transitioner,
+  Card,
+  CardStack,
+} = NavigationExperimental;
+const {
+  PagerStyleInterpolator,
+} = Card;
 
 const Container = styled.View`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #F5FCFF;
 `;
 
-const Welcome = styled.Text`
-  font-size: 20;
-  text-align: center;
-  margin: 10;
-`;
+const getScene = (key) => {
+  switch (key) {
+    case 'Cookbooks':
+      return Cookbooks;
+    case 'Recipes':
+      return Recipes;
+    default:
+      return DemoView;
+  }
+}
 
-const Instructions = styled.Text`
-  text-align: center;
-  color: #333333;
-  margin-bottom: 5;
-`;
+const SceneContainer = (props) => {
+  const Scene = getScene(props.scene.route.key);
+  const style = [
+    {
+      flex: 1,
+      position: 'absolute',
+      bottom: 0,
+      top: 0,
+      left: 0,
+      right: 0,
+    },
+    PagerStyleInterpolator.forHorizontal(props),
+  ];
+  return (
+    <Animated.View style={style}>
+      <Scene {...props} style={style} />
+    </Animated.View>
+  )
+}
 
-const Button = styled.TouchableHighlight`
-   background-color: ${props => props.warning ? 'orange' : 'limegreen'};
-  padding: 5;
-  border: 1 solid black;
-  border-radius: 5;
-  min-width: 100;
-`;
+const renderScene = (sceneProps) => {
+  return <SceneContainer {...sceneProps} key={sceneProps.scene.key} />
+}
 
-export default ({ triggerDemo, navigateForward, demo }) => (
-  <Container>
-    <Welcome>
-      Welcome to React Native!
-    </Welcome>
-    <Instructions>
-      To get started, edit index.ios.js
-    </Instructions>
-    <Instructions>
-      Press Cmd+R to reload,{'\n'}
-      Cmd+D or shake for dev menu
-    </Instructions>
-    <Button onPress={triggerDemo} warning={demo}><View><Instructions>Toggle Demo</Instructions></View></Button>
-    <Button onPress={navigateForward}><View><Instructions>Navigate Forward</Instructions></View></Button>
-    <Instructions>
-      Demo: {demo.toString()}
-    </Instructions>
-  </Container>
+const render = (transitionProps) => {
+  const scenes = transitionProps.scenes.map( (scene) => {
+    return renderScene({
+      ...transitionProps,
+      scene,
+    })
+  })
+  return <Container>{scenes}</Container>
+}
+
+export default ({navigation}) => (
+  <Transitioner
+    navigationState={navigation}
+    render={render}
+  />
 );

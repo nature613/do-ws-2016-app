@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import AppContainer from '../components/AppContainer';
+import Recipes from '../components/Recipes';
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(ActionCreators, dispatch);
 const mapStateToProps = (state) => ({
-  navigation: state.navigation,
 });
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
