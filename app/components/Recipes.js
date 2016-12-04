@@ -27,14 +27,11 @@ const Button = styled.TouchableHighlight`
 
 const prepare = (navigate, id, category) => () => navigate({key: 'Recipe', id, category})
 
-export default ({ triggerDemo, navigatePop, navigatePush, demo, children, scene }) => (
+export default ({ triggerDemo, navigatePush, demo, children, scene }) => (
   <Container>
     <Text>
       Recipes {scene.route.id}
     </Text>
-    <Button onPress={navigatePop} warning>
-      <View><Text>Back</Text></View>
-    </Button>
     <Button onPress={prepare(navigatePush, "#1", scene.route.id)}>
       <View><Text>Show Recipe #1</Text></View>
     </Button>

@@ -25,7 +25,7 @@ const Button = styled.TouchableHighlight`
   min-width: 100;
 `;
 
-export default ({ triggerDemo, navigatePop, demo, children, scene }) => (
+export default ({ triggerDemo, demo, children, scene }) => (
   <Container>
     <Text>
       Recipe {scene.route.id}
@@ -33,8 +33,5 @@ export default ({ triggerDemo, navigatePop, demo, children, scene }) => (
     <Text>
       Category {scene.route.category}
     </Text>
-    <Button onPress={navigatePop} warning>
-      <View><Text>Back</Text></View>
-    </Button>
   </Container>
 );
