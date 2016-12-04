@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './app';
-import AppContainer from './app/containers/AppContainer';
+import { AppContainer } from './app/containers';
 
 const App = () => (
   <Provider store={store}>

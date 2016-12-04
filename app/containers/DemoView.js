@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import DemoView from '../components/DemoView';
+import { DemoView } from '../components';
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(ActionCreators, dispatch);

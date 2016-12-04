@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Recipes from '../components/Recipes';
+import { Recipes } from '../components';
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(ActionCreators, dispatch);
