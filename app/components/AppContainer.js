@@ -2,6 +2,7 @@ import React from 'react';
 import {
   NavigationExperimental,
   Text,
+  View,
 } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -23,25 +24,28 @@ const Container = styled.View`
 `;
 
 const NavigationCardStack = styled(CardStack)`
-
+  flex: 20;
 `;
 
 const getScene = (key) => {
   switch (key) {
-    case 'Cookbooks':
+    case 'cookbooks':
       return Cookbooks;
-    case 'Recipes':
+    case 'recipes':
       return Recipes;
-    case 'Recipe':
+    case 'recipe':
       return Recipe;
     default:
       return DemoView;
   }
 }
-
+const Spacer = styled.View`
+  height: 32;
+  background-color: black;
+`;
 const renderScene = (sceneProps) => {
   const Scene = getScene(sceneProps.scene.route.key);
-  return <Scene {...sceneProps} />
+  return <View><Spacer/><Scene {...sceneProps} /></View>
 }
 
 const renderHeader = (props) => (

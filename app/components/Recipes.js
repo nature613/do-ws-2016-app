@@ -25,8 +25,12 @@ const Button = styled.TouchableHighlight`
   min-width: 100;
 `;
 
-const prepare = (navigate, id, category) => () => navigate({key: 'Recipe', id, category})
-
+const prepare = (navigate, id, category) => () => navigate({
+  key: 'recipe',
+  title: `Recipes - ${id}`,
+  id,
+  category,
+})
 export default ({ triggerDemo, navigatePush, demo, children, scene }) => (
   <Container>
     <Text>

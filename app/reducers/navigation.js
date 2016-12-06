@@ -11,7 +11,10 @@ const {
 export const navigation = createReducer({
   index: 0,
   routes: [
-    { key: 'Cookbooks' },
+    {
+      key: 'cookbooks',
+      title: 'Cookbooks',
+    },
   ]
 }, {
   [types.NAVIGATION_PUSH](state, action){
