@@ -10,7 +10,7 @@ const loggerMiddelware = createLogger({predicate: (getState, action) => __DEV__}
 const configureStore = (initialState) => {
   const enhancer = composeEnhancers(
     applyMiddleware(
-      loggerMiddelware,
+      // loggerMiddelware,
     )
   )
   return createStore(reducer, initialState, enhancer);
