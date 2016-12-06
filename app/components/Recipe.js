@@ -17,14 +17,6 @@ const Text = styled.Text`
   margin: 10;
 `;
 
-const Button = styled.TouchableHighlight`
-  background-color: ${props => props.warning ? 'orange' : 'limegreen'};
-  padding: 5;
-  border: 1 solid black;
-  border-radius: 5;
-  min-width: 100;
-`;
-
 export default ({ triggerDemo, demo, children, scene }) => (
   <Container>
     <Text>

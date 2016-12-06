@@ -4,20 +4,33 @@ import {
   View,
 } from 'react-native';
 import styled from 'styled-components/native';
+import { BlurView } from 'react-native-blur';
 
 const {
   Header: NavigationHeader,
 } = NavigationExperimental;
 
+const Spacer = styled(BlurView)`
+  height: 64;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+
+`;
 const Title = (props) => (
   <NavigationHeader.Title>{props.scene.route.key}</NavigationHeader.Title>
 );
 
 const Header = (sceneProps) => (
-  <NavigationHeader
-      {...sceneProps}
-      onNavigateBack={sceneProps.navigatePop}
-    />
+  <View>
+    <Spacer blurType="xlight" blurAmount={8}/>
+    <NavigationHeader
+        {...sceneProps}
+        onNavigateBack={sceneProps.navigatePop}
+      />
+  </View>
 );
 
 export default styled(Header)`
@@ -26,5 +39,5 @@ export default styled(Header)`
   left: 0;
   right: 0;
   z-index: 10;
-  background-color: rgba(250, 250, 250, 0.9)
+  background-color: transparent;
 `;

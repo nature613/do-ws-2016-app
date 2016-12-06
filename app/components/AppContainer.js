@@ -5,7 +5,6 @@ import {
   View,
 } from 'react-native';
 import styled from 'styled-components/native';
-
 import {
   DemoView,
   Cookbooks,
@@ -39,13 +38,10 @@ const getScene = (key) => {
       return DemoView;
   }
 }
-const Spacer = styled.View`
-  height: 32;
-  background-color: black;
-`;
+
 const renderScene = (sceneProps) => {
   const Scene = getScene(sceneProps.scene.route.key);
-  return <View><Spacer/><Scene {...sceneProps} /></View>
+  return <Scene {...sceneProps} />
 }
 
 const renderHeader = (props) => (

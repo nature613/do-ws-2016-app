@@ -1,41 +1,17 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import {
   View,
+  Text,
   ListView,
-  PixelRatio,
 } from 'react-native';
+import { List, Row } from './index';
 
-const List = styled(ListView)`
-  background-color: white;
-`;
-const SpacerTop = styled.View`
-  height: 64;
-  flex: 1;
-  border-bottom-width: ${1 / PixelRatio.get()};
-  border-bottom-color: #CDCDCD;
-`;
-const Spacer = styled.View`
-  height: 1;
-  background-color: black;
-`;
-const Text = styled.Text`
-  font-size: 20;
-  text-align: center;
-  margin: 10;
-`;
-
-const Row = styled.TouchableHighlight`
-  padding: 15;
-  background-color: white;
-  border-bottom-width: ${1 / PixelRatio.get()};
-  border-bottom-color: #CDCDCD;
-`;
 const prepare = (navigate, id) => () => navigate({
   key: 'recipes',
-  title: `Recipes - ${id}`,
+  title: `${id}`,
   id,
 })
+
 const renderRow = (navigatePush) => (rowData) => (
   <Row
     onPress={prepare(navigatePush, rowData)}
@@ -44,21 +20,27 @@ const renderRow = (navigatePush) => (rowData) => (
     <View><Text>{rowData}</Text></View>
   </Row>
 )
-const renderHeader = () => <SpacerTop/>
-const renderSeperator = (sectionID, rowID) =>
-  <Spacer key={`${sectionID}-${rowID}`}/>
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-const data = {
-  dataSource: ds.cloneWithRows([
-    'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin', 'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
-  ])
-};
-export default ({ triggerDemo, navigatePush, demo, children }) => (
+const data = [
+  'Asian-Cookbook',
+  'German-Cookbook',
+  'British-Cookbook',
+  'BBQ-Cookbook',
+  'Love-Cookbook',
+  'Rice-Cookbook',
+  '1-Cookbook',
+  '2-Cookbook',
+  '3-Cookbook',
+  '4-Cookbook',
+  '5-Cookbook',
+  '6-Cookbook',
+  '7-Cookbook',
+  '8-Cookbook',
+];
+export default ({ navigatePush }) => (
     <List
-      dataSource={data.dataSource}
+      data={data}
       renderRow={renderRow(navigatePush)}
-      renderHeader={renderHeader}
-      renderSeperator={renderSeperator}
     />
 );
