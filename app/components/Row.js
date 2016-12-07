@@ -53,12 +53,12 @@ const Subtitle = styled.Text`
 export default (props) =>(
   <Row {...props}>
     <View>
-      <Container>
+      <Container height={props.height}>
         <Title dark={!!props.source}>{props.title}</Title>
         <Subtitle dark={!!props.source}>{props.subtitle}</Subtitle>
       </Container>
       {props.source&&<Overlay colors={['rgba(255,255,255,0)', 'rgba(0,0,0,1)']}  locations={[-1.3,1]}/>}
-      <BackgroundImage source={props.source} height={props.height}/>
+      <BackgroundImage source={props.source}/>
     </View>
   </Row>
 )

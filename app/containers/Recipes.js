@@ -6,5 +6,6 @@ import { Recipes } from '../components';
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(ActionCreators, dispatch);
 const mapStateToProps = (state) => ({
+  recipes: state.recipes,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
