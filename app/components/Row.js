@@ -4,14 +4,14 @@ import {
   View
 } from 'react-native';
 import styled from 'styled-components/native';
-
+import LinearGradient from 'react-native-linear-gradient';
 const Row = styled.TouchableHighlight`
   background-color: white;
   border-bottom-width: ${1 / PixelRatio.get()};
   border-bottom-color: #CDCDCD;
 `;
 
-const Overlay = styled.View`
+const Overlay = styled(LinearGradient)`
   z-index:2;
   position: absolute;
   top: 0;
@@ -19,7 +19,7 @@ const Overlay = styled.View`
   right: 0;
   bottom: 0;
   background-color: black;
-  opacity: 0.5;
+  opacity: .4;
 `;
 
 const BackgroundImage = styled.Image`
@@ -57,7 +57,7 @@ export default (props) =>(
         <Title dark={!!props.source}>{props.title}</Title>
         <Subtitle dark={!!props.source}>{props.subtitle}</Subtitle>
       </Container>
-      <Overlay/>
+      {props.source&&<Overlay colors={['rgba(255,255,255,0)', 'rgba(0,0,0,1)']}  locations={[-1.3,1]}/>}
       <BackgroundImage source={props.source} height={props.height}/>
     </View>
   </Row>

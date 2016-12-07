@@ -4104,6 +4104,10 @@ react-native-blur:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-1.2.0.tgz#4479a1efdb3666768835767accb9475b27af4ab3"
 
+react-native-linear-gradient:
+  version "1.5.15"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-1.5.15.tgz#4413111934dc1d8f5e0572ca96e60b1a2cf41f4d"
+
 react-proxy@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-1.1.8.tgz#9dbfd9d927528c3aa9f444e4558c37830ab8c26a"
