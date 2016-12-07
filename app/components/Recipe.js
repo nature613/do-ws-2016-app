@@ -20,10 +20,10 @@ const Text = styled.Text`
 export default ({ triggerDemo, demo, children, scene }) => (
   <Container>
     <Text>
-      Recipe {scene.route.id}
+      Recipe: {scene.route.id}
     </Text>
     <Text>
-      Category {scene.route.category}
+      Cookbook: {scene.route.cookbookId}
     </Text>
   </Container>
 );
