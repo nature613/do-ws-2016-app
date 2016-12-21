@@ -4,50 +4,19 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
 } from 'react-native';
+import { ApolloProvider } from 'react-apollo';
+import { store, client } from './app';
+import { AppContainer } from './app/containers';
 
-export default class bbqApp extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+const App = () => (
+  <ApolloProvider store={store} client={client}>
+    <AppContainer/>
+  </ApolloProvider>
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('bbqApp', () => bbqApp);
+export default App;
+AppRegistry.registerComponent('bbqApp', () => App);

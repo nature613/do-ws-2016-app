@@ -7,11 +7,21 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"apollo-client": "^0.5.23",
+		"graphql-tag": "^1.1.2",
 		"react": "~15.4.0-rc.4",
-		"react-native": "0.38.0"
+		"react-apollo": "^0.7.1",
+		"react-native": "0.38.0",
+		"react-native-blur": "^1.2.0",
+		"react-native-linear-gradient": "^1.5.15",
+		"react-redux": "^4.4.6",
+		"recompose": "^0.21.1",
+		"redux": "^3.6.0",
+		"styled-components": "^1.1.2"
 	},
 	"devDependencies": {
 		"babel-jest": "17.0.2",
+		"babel-preset-es2015": "^6.18.0",
 		"babel-preset-react-native": "1.9.0",
 		"jest": "17.0.3",
 		"jest-react-native": "17.1.0",
