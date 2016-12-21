@@ -6,6 +6,6 @@ import { AppContainer } from '../components';
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(ActionCreators, dispatch);
 const mapStateToProps = (state) => ({
-  navigation: state.navigation,
+  navigation: state.app.navigation,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

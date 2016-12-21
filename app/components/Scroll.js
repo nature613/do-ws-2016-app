@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {
   View,
-  ListView,
+  ScrollView,
   PixelRatio,
   RefreshControl,
 } from 'react-native';
@@ -11,7 +11,7 @@ import {
   Spinner,
 } from './index'
 
-const List = styled(ListView)`
+const Scroll = styled(ScrollView)`
   margin-top: 64;
   background-color: white;
   overflow: visible;
@@ -25,23 +25,18 @@ const Text = styled.Text`
   color: orange;
 `;
 
-const renderLoading = () => null
-
-const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
-export default ({ data, renderRow, loading, onRefresh, error }) => {
+export default ({ loading, onRefresh, error, renderContent, data }) => {
   if (!error) {
     return (
-      <List
-        removeClippedSubviews={false}
-        dataSource={data ? ds.cloneWithRows(data): ds}
-        renderRow={data ? renderRow : renderLoading}
+      <Scroll
         refreshControl={
           <RefreshControl
               refreshing={loading}
               onRefresh={onRefresh}
           /> }
-      />
+      >
+        {!loading && renderContent(data)}
+      </Scroll>
     );
   }else {
     return (

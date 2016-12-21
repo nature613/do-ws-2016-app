@@ -6,28 +6,31 @@ import {
 } from 'react-native';
 import { List, Row } from './index';
 
-const prepare = (navigate, id, cookbookId) => () => navigate({
+const prepare = (navigate, {_id, title}) => () => navigate({
   key: 'recipe',
-  title: `${id}`,
-  id: `#${id}`,
-  cookbookId,
+  title: title,
+  id: _id,
 })
 
-const renderRow = (navigatePush, cookbookId) => (rowData) => (
+const renderRow = (navigatePush, cookbookId) => (recipe) => (
   <Row
-    onPress={prepare(navigatePush, rowData.id, cookbookId)}
+    onPress={prepare(navigatePush, recipe, cookbookId)}
     underlayColor="#D0D0D0"
     height={85}
-    title={rowData.id}
-    source={rowData.thumbnail?{uri:rowData.thumbnail}:null}
-    subtitle="test"
+    title={recipe.title}
+    source={recipe.thumbnail?{uri:recipe.thumbnail}:null}
+    author={recipe.author.username}
+    tags={recipe.tags}
   />
 )
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-export default ({ navigatePush, scene, recipes }) => (
+export default ({ navigatePush, data }) => (
     <List
-      data={recipes}
-      renderRow={renderRow(navigatePush, scene.route.id)}
+      data={!data.loading && data.cookbook.recipes}
+      renderRow={renderRow(navigatePush)}
+      loading={data.loading}
+      error={data.error}
+      onRefresh={data.refetch}
     />
 );

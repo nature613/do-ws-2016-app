@@ -8,14 +8,14 @@ import React from 'react';
 import {
   AppRegistry,
 } from 'react-native';
-import { Provider } from 'react-redux';
-import { store } from './app';
+import { ApolloProvider } from 'react-apollo';
+import { store, client } from './app';
 import { AppContainer } from './app/containers';
 
 const App = () => (
-  <Provider store={store}>
+  <ApolloProvider store={store} client={client}>
     <AppContainer/>
-  </Provider>
+  </ApolloProvider>
 );
 
 export default App;

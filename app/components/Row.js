@@ -50,12 +50,22 @@ const Subtitle = styled.Text`
   font-size: 15;
 `;
 
+const tagToString = (prev, current) => (`${prev} #${current}`);
+
 export default (props) =>(
   <Row {...props}>
     <View>
       <Container height={props.height}>
         <Title dark={!!props.source}>{props.title}</Title>
-        <Subtitle dark={!!props.source}>{props.subtitle}</Subtitle>
+        <Subtitle dark={!!props.source}>
+          {props.tags ? props.tags.reduce(tagToString, '') : ''}
+        </Subtitle>
+        <Subtitle dark={!!props.source}>
+          {props.author ? `by ${props.author}`: ''}
+        </Subtitle>
+        <Subtitle dark={!!props.source}>
+          {props.subtitle}
+        </Subtitle>
       </Container>
       {props.source&&<Overlay colors={['rgba(255,255,255,0)', 'rgba(0,0,0,1)']}  locations={[-1.3,1]}/>}
       <BackgroundImage source={props.source}/>

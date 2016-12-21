@@ -6,3 +6,5 @@ export { default as Recipe } from './Recipe';
 export { default as Header } from './Header';
 export { default as List } from './List';
 export { default as Row } from './Row';
+export { default as Spinner } from './Spinner';
+export { default as Scroll } from './Scroll';

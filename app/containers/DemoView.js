@@ -6,6 +6,6 @@ import { DemoView } from '../components';
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(ActionCreators, dispatch);
 const mapStateToProps = (state) => ({
-  demo: state.demo,
+  demo: state.app.demo,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(DemoView);

@@ -2,17 +2,37 @@ import {
   createStore,
   compose,
   applyMiddleware,
+  combineReducers,
 } from 'redux'
-import createLogger from 'redux-logger';
-import reducer from './reducers';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+
+import appReducers from './reducers';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const loggerMiddelware = createLogger({predicate: (getState, action) => __DEV__})
+
+const apolloClient = new ApolloClient({
+  networkInterface: createNetworkInterface({ uri: 'http://139.59.133.211:4943/graphql' }),
+});
+
+const reducer = combineReducers({
+  app: appReducers,
+  apollo: apolloClient.reducer(),
+})
+
 const configureStore = (initialState) => {
   const enhancer = composeEnhancers(
     applyMiddleware(
-      // loggerMiddelware,
+      apolloClient.middleware(),
     )
   )
-  return createStore(reducer, initialState, enhancer);
+  const store = createStore(reducer, initialState, enhancer);
+    // if (module.hot) {
+    //   module.hot.accept(() => {
+    //     const nextRootReducer = require('./reducers/index').default;
+    //     store.replaceReducer(nextRootReducer);
+    //   });
+    // }
+  return store;
 }
 export const store = configureStore({});
+export const client = apolloClient;
