@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 import {
   Dimensions,
 } from 'react-native';
+import { withProps } from 'recompose';
 
 const {height, width} = Dimensions.get('window');
 const Query = gql`
@@ -32,4 +33,11 @@ const mapStateToProps = (state) => ({
 export default compose(
   graphql(Query),
   connect(mapStateToProps, mapDispatchToProps),
+  withProps(({navigatePush}) => ({
+    navigate: ({_id, title}) => () => navigatePush({
+      key: 'recipes',
+      title: title,
+      id: _id,
+    })
+  }))
 )(Cookbooks);

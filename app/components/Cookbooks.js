@@ -7,16 +7,10 @@ import {
 import styled from 'styled-components/native';
 import { List, Row } from './index';
 
-const prepare = (navigate, {_id, title}) => () => navigate({
-  key: 'recipes',
-  title: title,
-  id: _id,
-})
-
-const renderRow = (navigatePush) => (cookbook) => (
+const renderRow = (navigate) => (cookbook) => (
   <Row
     height={85}
-    onPress={prepare(navigatePush, cookbook)}
+    onPress={navigate(cookbook)}
     underlayColor="#D0D0D0"
     source={cookbook.thumbnail?{uri:cookbook.thumbnail}:null}
     title={cookbook.title}
@@ -26,10 +20,10 @@ const renderRow = (navigatePush) => (cookbook) => (
 )
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-export default ({ navigatePush, data }) => (
+export default ({ navigate, data }) => (
   <List
       data={data.cookbooks}
-      renderRow={renderRow(navigatePush)}
+      renderRow={renderRow(navigate)}
       loading={data.loading}
       error={data.error}
       onRefresh={data.refetch}

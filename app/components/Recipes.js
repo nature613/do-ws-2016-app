@@ -6,15 +6,9 @@ import {
 } from 'react-native';
 import { List, Row } from './index';
 
-const prepare = (navigate, {_id, title}) => () => navigate({
-  key: 'recipe',
-  title: title,
-  id: _id,
-})
-
-const renderRow = (navigatePush, cookbookId) => (recipe) => (
+const renderRow = (navigate) => (recipe) => (
   <Row
-    onPress={prepare(navigatePush, recipe, cookbookId)}
+    onPress={navigate(recipe)}
     underlayColor="#D0D0D0"
     height={85}
     title={recipe.title}
@@ -25,10 +19,10 @@ const renderRow = (navigatePush, cookbookId) => (recipe) => (
 )
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-export default ({ navigatePush, data }) => (
+export default ({ navigate, data }) => (
     <List
       data={!data.loading && data.cookbook.recipes}
-      renderRow={renderRow(navigatePush)}
+      renderRow={renderRow(navigate)}
       loading={data.loading}
       error={data.error}
       onRefresh={data.refetch}

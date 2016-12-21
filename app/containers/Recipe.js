@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 import {
   Dimensions,
 } from 'react-native';
+import { withProps, toClass } from 'recompose';
 
 const {height, width} = Dimensions.get('window');
 const Query = gql`
@@ -46,4 +47,7 @@ export default compose(
     options: mapPropsToOptions,
   }),
   connect(mapStateToProps, mapDispatchToProps),
+  withProps(({navigateUpdate}) => ({
+    updateRoute: (route) => () => navigateUpdate(route)
+  })),
 )(Recipe);

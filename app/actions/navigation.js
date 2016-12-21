@@ -7,3 +7,7 @@ export const navigatePush= (state) => ({
 export const navigatePop = () => ({
   type: types.NAVIGATION_POP,
 })
+export const navigateUpdate = (route) => ({
+  type: types.NAVIGATION_UPDATE,
+  route,
+})
