@@ -48,6 +48,7 @@ export default compose(
       title: title,
       id: _id,
       task: 0,
+      ticks: null,
     })
   }))
 )(Recipes);

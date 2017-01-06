@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {
   View,
   Dimensions,
@@ -50,6 +51,7 @@ class Sequence extends React.Component {
   constructor(props) {
     super(props);
     this.updateTask = this.updateTask.bind(this)
+    this.startTimer = this.startTimer.bind(this)
   }
 
   updateTask(value){
@@ -59,9 +61,33 @@ class Sequence extends React.Component {
       if((newTask>= 0) && (newTask < sequence.length)) {
         updateRoute({
           task: newTask,
+          ticks: null,
         })()
       }
     };
+  }
+
+  startTimer(duration){
+    return () => {
+      if (!this.timer) {
+        console.log("Timer started: " + duration);
+        const durationMS = duration * 1000;
+        let ticks = duration;
+        this.interval = setInterval(() => {
+          console.log(--ticks);
+          this.props.updateRoute({
+            ticks,
+          })()
+        }, 1000);
+        this.timer = setTimeout(() => {
+          console.log("Timer ended!");
+          this.updateTask(1)();
+          this.timer = null;
+          clearInterval(this.interval);
+          this.interval = null;
+        }, durationMS);
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -70,8 +96,15 @@ class Sequence extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      clearInterval(this.interval);
+    }
+  }
+
   render() {
-    const {sequence, task: activeTask} = this.props;
+    const {sequence, task: activeTask, ticks} = this.props;
     return (
       <View>
         <ControlledScroll
@@ -94,13 +127,19 @@ class Sequence extends React.Component {
             underlayColor="#D0D0D0"
             onPress={this.updateTask(-1)}
           >
-            <View><Text>Previous Task</Text></View>
+              <View><Text><Icon name="ios-arrow-back-outline" size={30} /></Text></View>
+          </Button>
+          <Button
+            underlayColor="#D0D0D0"
+            onPress={this.startTimer(sequence[activeTask].duration)}
+          >
+            <View><Text>{ticks ? ticks:<Icon name="ios-timer-outline" size={30} />}</Text></View>
           </Button>
           <Button
             underlayColor="#D0D0D0"
             onPress={this.updateTask(1)}
           >
-            <View><Text>Next Task</Text></View>
+              <View><Text><Icon name="ios-arrow-forward-outline" size={30} /></Text></View>
           </Button>
 
         </Container>
@@ -109,7 +148,7 @@ class Sequence extends React.Component {
   }
 }
 
-const renderContent = (updateRoute, task) => (recipe) => (
+const renderContent = (updateRoute, task, ticks) => (recipe) => (
   <View>
     <Row
       height={150}
@@ -118,7 +157,7 @@ const renderContent = (updateRoute, task) => (recipe) => (
       tags={recipe.tags}
       source={recipe.thumbnail?{uri:recipe.thumbnail}:null}
     />
-    <Sequence sequence={recipe.sequence} task={task} updateRoute={updateRoute} />
+    <Sequence sequence={recipe.sequence} task={task} ticks={ticks} updateRoute={updateRoute} />
   </View>
 )
 export default ({ triggerDemo, data, updateRoute, scene }) => (
@@ -126,6 +165,6 @@ export default ({ triggerDemo, data, updateRoute, scene }) => (
     loading={data.loading}
     error={data.error}
     data={data.recipe}
-    renderContent={renderContent(updateRoute, scene.route.task)}
+    renderContent={renderContent(updateRoute, scene.route.task, scene.route.ticks)}
   />
 );
