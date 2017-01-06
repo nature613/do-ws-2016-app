@@ -15,7 +15,15 @@ const Button = styled.TouchableHighlight`
   flex: 1;
   border-width: 1;
   border-radius: 5;
-  border-color: ${({disabled}) => disabled?'lightgrey':'rgb(0, 122, 255)'};
+  border-color: ${({disabled, content}) => {
+      if (disabled) {
+        return 'lightgrey';
+      }
+      if (content) {
+        return '#FF3B30'
+      }
+      return 'rgb(0, 122, 255)'
+    }};
   margin: 20;
 `;
 
@@ -25,8 +33,9 @@ const IconButton = ({onPress, disabled, icon, content}) => {
       underlayColor="#D0D0D0"
       onPress={onPress}
       disabled={disabled}
+      content={content}
     >
-        <View><Text>{content ? content : <Icon name={icon} size={30} color={disabled?'lightgrey':'rgb(0, 122, 255)'}/>}</Text></View>
+        <View><ButtonText disabled={disabled} content={content}>{content ? content : <Icon name={icon} size={30}/> }</ButtonText></View>
     </Button>
   );
 }
@@ -35,21 +44,100 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: space-around;
 `;
+const Info = styled.View`
+  margin-left: 20;
+  flex-direction: row;
+`;
+
+const Conditional = ({condition = true,children}) => condition ? <Info>{children}</Info> : null;
 
 const Text = styled.Text`
   font-size: 20;
   margin: 10;
+`;
+const Center = styled(Text)`
   text-align: center;
 `;
+const ButtonText = styled(Center)`
+  color: ${({disabled, content}) => {
+    if (disabled) {
+      return 'lightgrey';
+    }
+    if (content) {
+      return '#FF3B30'
+    }
+    return 'rgb(0, 122, 255)'
+  }};
+  font-size: 25;
+`;
+const Label = styled(Text)`
+  min-width: 150;
+`;
 
+const LightText = styled(Text)`
+  color: #888;
+`;
+const StyledIcon = styled(Icon)`
+  font-size: 20;
+  margin: 10;
+`
+const Instructions = styled(LightText)`
+  margin-left: 30;
+  max-height: 100;
+`;
 const Step = styled.View`
   width: ${() => Dimensions.get('window').width};
+  justify-content: center;
 `
+
+const Method = ({data}) => {
+  const on = <StyledIcon name="ios-bonfire" color="#FF9500"/>;
+  const off = <StyledIcon name="ios-bonfire-outline" color="#FF5E3A" />;
+  switch (data) {
+    case 'DIRECT':
+      return <Text>{on} {on} {on}</Text>;
+    case 'INDIRECT':
+      return <Text>{on} {off} {on}</Text>;
+    default:
+      return null;
+  }
+}
+
+const Intensity = ({data}) => {
+  const on = <StyledIcon name="ios-flame" color="#FF9500" />;
+  const off = <StyledIcon name="ios-flame-outline" color="#FF5E3A" />;
+
+  switch (data) {
+    case 'STRONG':
+    return <Text>{on} {on} {on}</Text>;
+    case 'MEDIUM':
+    return <Text>{on} {on} {off}</Text>;
+    case 'LOW':
+    return <Text>{on} {off} {off}</Text>;
+    default:
+      return null;
+  }
+}
 
 const Task = ({task, id, active}) => (
   <Step active={active}>
-    <Text>#{id+1} - {task.title} - {task.method}-{task.intensity}</Text>
-    <Text>{task.duration}sec</Text>
+    <Conditional>
+      <Label>Step</Label>
+      <LightText>{id+1}</LightText>
+    </Conditional>
+    <Instructions>{task.title}</Instructions>
+    <Conditional condition={task.method}>
+      <Label>Method</Label>
+      <Method data={task.method} />
+    </Conditional>
+    <Conditional condition={task.intensity}>
+      <Label>Intensity</Label>
+      <Intensity data={task.intensity} />
+    </Conditional>
+    <Conditional condition={task.duration}>
+      <Label>Duration</Label>
+      <LightText>{task.duration} sec</LightText>
+    </Conditional>
   </Step>
 )
 
