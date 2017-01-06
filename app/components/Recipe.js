@@ -15,10 +15,21 @@ const Button = styled.TouchableHighlight`
   flex: 1;
   border-width: 1;
   border-radius: 5;
-  border-color: rgb(0, 122, 255);
-  ${''/* background-color: deepskyblue ;*/}
+  border-color: ${({disabled}) => disabled?'lightgrey':'rgb(0, 122, 255)'};
   margin: 20;
 `;
+
+const IconButton = ({onPress, disabled, icon, content}) => {
+  return (
+    <Button
+      underlayColor="#D0D0D0"
+      onPress={onPress}
+      disabled={disabled}
+    >
+        <View><Text>{content ? content : <Icon name={icon} size={30} color={disabled?'lightgrey':'rgb(0, 122, 255)'}/>}</Text></View>
+    </Button>
+  );
+}
 
 const Container = styled.View`
   flex-direction: row;
@@ -123,25 +134,22 @@ class Sequence extends React.Component {
           ))}
         </ControlledScroll>
         <Container>
-          <Button
-            underlayColor="#D0D0D0"
+          <IconButton
             onPress={this.updateTask(-1)}
-          >
-              <View><Text><Icon name="ios-arrow-back-outline" size={30} /></Text></View>
-          </Button>
-          <Button
-            underlayColor="#D0D0D0"
+            disabled={activeTask-1 < 0}
+            icon="ios-arrow-back-outline"
+          />
+          <IconButton
             onPress={this.startTimer(sequence[activeTask].duration)}
-          >
-            <View><Text>{ticks ? ticks:<Icon name="ios-timer-outline" size={30} />}</Text></View>
-          </Button>
-          <Button
-            underlayColor="#D0D0D0"
+            icon="ios-timer-outline"
+            disabled={!sequence[activeTask].duration}
+            content={ticks}
+          />
+          <IconButton
             onPress={this.updateTask(1)}
-          >
-              <View><Text><Icon name="ios-arrow-forward-outline" size={30} /></Text></View>
-          </Button>
-
+            disabled={activeTask+1 > sequence.length-1}
+            icon="ios-arrow-forward-outline"
+          />
         </Container>
       </View>
     )
