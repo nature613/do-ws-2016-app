@@ -4239,6 +4239,10 @@ react-native-linear-gradient:
   version "1.5.15"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-1.5.15.tgz#4413111934dc1d8f5e0572ca96e60b1a2cf41f4d"
 
+react-native-sound@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.8.3.tgz#2c0b08dde0c9afee33e6aef3de020f2781c38bed"
+
 react-native-vector-icons@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.0.0.tgz#6a2f8f4c6ace613aed7748cd530809283e5b1538"

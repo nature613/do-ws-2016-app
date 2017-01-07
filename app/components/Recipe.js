@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Sound from 'react-native-sound';
 import {
   View,
   Dimensions,
   Animated,
+  Alert,
+  Vibration,
 } from 'react-native';
 import {
   Scroll,
@@ -152,6 +155,14 @@ class Sequence extends React.Component {
     this.updateTask = this.updateTask.bind(this)
     this.startTimer = this.startTimer.bind(this)
   }
+  componentWillMount() {
+    this.sound = new Sound('alarm.mp3', Sound.MAIN_BUNDLE, (e) => {
+      if (e) {
+        console.error(e);
+      }
+    });
+  }
+
 
   updateTask(value){
     return () => {
@@ -169,21 +180,38 @@ class Sequence extends React.Component {
   startTimer(duration){
     return () => {
       if (!this.timer) {
-        console.log("Timer started: " + duration);
         const durationMS = duration * 1000;
         let ticks = duration;
         this.interval = setInterval(() => {
-          console.log(--ticks);
+          --ticks;
           this.props.updateRoute({
             ticks,
           })()
         }, 1000);
         this.timer = setTimeout(() => {
-          console.log("Timer ended!");
-          this.updateTask(1)();
-          this.timer = null;
           clearInterval(this.interval);
           this.interval = null;
+          this.sound.play((success) => {
+            if (success) {
+              this.sound.play();
+            }
+          });
+          this.props.updateRoute({
+            ticks: null,
+          })()
+          Vibration.vibrate([0, 500, 200, 500], true);
+          Alert.alert(
+            'Time is up.',
+            this.props.sequence[this.props.task].title,
+            [
+              {text: 'Next Step', onPress: () => {
+                this.updateTask(1)();
+                this.sound.stop();
+                Vibration.cancel();
+              }},
+            ]
+          )
+          this.timer = null;
         }, durationMS);
       }
     }
@@ -199,6 +227,9 @@ class Sequence extends React.Component {
     if (this.timer) {
       clearTimeout(this.timer);
       clearInterval(this.interval);
+    }
+    if (this.sound) {
+      this.sound.release();
     }
   }
 
