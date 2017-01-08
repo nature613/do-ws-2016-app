@@ -4235,6 +4235,10 @@ react-native-blur:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-1.2.0.tgz#4479a1efdb3666768835767accb9475b27af4ab3"
 
+react-native-keep-awake@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-keep-awake/-/react-native-keep-awake-1.0.7.tgz#4ca2deb2448d1dbfec375d97e1299559a350d81f"
+
 react-native-linear-gradient:
   version "1.5.15"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-1.5.15.tgz#4413111934dc1d8f5e0572ca96e60b1a2cf41f4d"

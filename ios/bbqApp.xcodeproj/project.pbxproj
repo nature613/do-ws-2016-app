@@ -36,6 +36,7 @@
 		9445463F2A8D4EE38FFAD4B2 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC38D5ED45D24BA2BC95D931 /* Entypo.ttf */; };
 		95479F56075A4835A6B510E4 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 710507C7EEE449E783FF200A /* MaterialIcons.ttf */; };
 		992494946B1442C0AC5B1827 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A88D402F7CF4466B41BC7B9 /* libRNSound.a */; };
+		D61B5040F64F4FA4932B07CC /* libKCKeepAwake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A349D0B2C9D045F68DFD8656 /* libKCKeepAwake.a */; };
 		D7702445D5F641F2ACAB75BD /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8652D072AAE94E4D8A3A6B53 /* EvilIcons.ttf */; };
 		DDD670DF1DF451770015B76C /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD670CC1DF451490015B76C /* libRCTAnimation.a */; };
 		DDEA888D1E2005AB008CCD41 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DDEA888C1E2005AB008CCD41 /* alarm.mp3 */; };
@@ -118,6 +119,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
+		};
+		DD7B745F1E214CBE00E3FC32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2EEE29F7E644EDFAD3BD1D9 /* KCKeepAwake.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = KCKeepAwake;
 		};
 		DDB25C091DF74512009DF8CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -246,12 +254,14 @@
 		8652D072AAE94E4D8A3A6B53 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		9AC44616FF2A4BCF83BED789 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		A0799F00C7394EB88C9224C1 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		A349D0B2C9D045F68DFD8656 /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
 		BBCF9488EFCB4786AA693FEB /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		C6150BE7579C44E6BCAED214 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		D77E6837857A4B6AB8744C7A /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		DDD670C51DF451480015B76C /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		DDEA888C1E2005AB008CCD41 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alarm.mp3; path = ../alarm.mp3; sourceTree = "<group>"; };
 		DFBCC0F9F88D4571BA4BBA18 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
+		E2EEE29F7E644EDFAD3BD1D9 /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		F6BE3BD6DEC245ADB38CFDF0 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		FC38D5ED45D24BA2BC95D931 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +294,7 @@
 				31BD1811A38C4A84BE53F90D /* libBVLinearGradient.a in Frameworks */,
 				7AE0ED7CE6D84F2C8A165185 /* libRNVectorIcons.a in Frameworks */,
 				992494946B1442C0AC5B1827 /* libRNSound.a in Frameworks */,
+				D61B5040F64F4FA4932B07CC /* libKCKeepAwake.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +428,7 @@
 				6B5A5FEA07CF410FBA70D29E /* BVLinearGradient.xcodeproj */,
 				D77E6837857A4B6AB8744C7A /* RNVectorIcons.xcodeproj */,
 				F6BE3BD6DEC245ADB38CFDF0 /* RNSound.xcodeproj */,
+				E2EEE29F7E644EDFAD3BD1D9 /* KCKeepAwake.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -468,6 +480,14 @@
 				A0799F00C7394EB88C9224C1 /* Zocial.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		DD7B745B1E214CBD00E3FC32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD7B74601E214CBE00E3FC32 /* libKCKeepAwake.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		DDB25BF31DF74510009DF8CA /* Products */ = {
@@ -583,6 +603,10 @@
 				{
 					ProductGroup = DDF68F1C1DF8306E0026D1CD /* Products */;
 					ProjectRef = 6B5A5FEA07CF410FBA70D29E /* BVLinearGradient.xcodeproj */;
+				},
+				{
+					ProductGroup = DD7B745B1E214CBD00E3FC32 /* Products */;
+					ProjectRef = E2EEE29F7E644EDFAD3BD1D9 /* KCKeepAwake.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -718,6 +742,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DD7B74601E214CBE00E3FC32 /* libKCKeepAwake.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKCKeepAwake.a;
+			remoteRef = DD7B745F1E214CBE00E3FC32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		DDB25C0A1DF74512009DF8CA /* libRNBlur.a */ = {
@@ -918,6 +949,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bbqApp.app/bbqApp";
@@ -934,6 +966,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -959,6 +992,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = bbqApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -987,6 +1021,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = bbqApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1043,6 +1078,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1087,6 +1123,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

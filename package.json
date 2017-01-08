@@ -13,6 +13,7 @@
 		"react-apollo": "^0.7.1",
 		"react-native": "0.38.0",
 		"react-native-blur": "^1.2.0",
+		"react-native-keep-awake": "^1.0.7",
 		"react-native-linear-gradient": "^1.5.15",
 		"react-native-sound": "^0.8.3",
 		"react-native-vector-icons": "^4.0.0",

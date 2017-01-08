@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Sound from 'react-native-sound';
+import KeepAwake from 'react-native-keep-awake';
+
 import {
   View,
   Dimensions,
@@ -30,7 +32,19 @@ const Button = styled.TouchableHighlight`
   margin: 10;
 `;
 
-const IconButton = ({onPress, disabled, icon, content, flex = 1}) => {
+const IconButton = ({onPress, disabled, icon, flex = 1}) => {
+  return (
+    <Button
+      underlayColor="#D0D0D0"
+      onPress={onPress}
+      disabled={disabled}
+      flex={flex}
+    >
+        <View><ButtonText disabled={disabled}><Icon name={icon} size={30}/></ButtonText></View>
+    </Button>
+  );
+}
+const TimerButton = ({onPress, disabled, icon, content, flex = 1}) => {
   return (
     <Button
       underlayColor="#D0D0D0"
@@ -39,7 +53,12 @@ const IconButton = ({onPress, disabled, icon, content, flex = 1}) => {
       content={content}
       flex={flex}
     >
-        <View><ButtonText disabled={disabled} content={content}>{content ? content : <Icon name={icon} size={30}/> }</ButtonText></View>
+      <View>
+        {content ? <KeepAwake/>: null}
+        <ButtonText disabled={disabled} content={content}>
+          {content ? content : <Icon name={icon} size={30}/> }
+        </ButtonText>
+      </View>
     </Button>
   );
 }
@@ -291,11 +310,11 @@ class Sequence extends React.Component {
             disabled={activeTask-1 < 0}
             icon="ios-arrow-back-outline"
           />
-          <IconButton
+          <TimerButton
             onPress={this.startTimer(sequence[activeTask].duration)}
             icon="ios-timer-outline"
             disabled={!sequence[activeTask].duration}
-            content={ticks?(new Date(ticks * 1000).toISOString().substr(11, 8)):null}
+            content={ticks?new Date(ticks * 1000).toISOString().substr(11, 8):null}
             flex={2}
           />
           <IconButton
