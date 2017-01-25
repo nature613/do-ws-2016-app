@@ -11,7 +11,7 @@ import appReducers from './reducers';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const apolloClient = new ApolloClient({
-  networkInterface: createNetworkInterface({ uri: 'http://139.59.133.211:4943/graphql' }),
+  networkInterface: createNetworkInterface({ uri: 'https://bbq-server.dev.jonas-faber.me/graphql' }),
 });
 
 const reducer = combineReducers({
